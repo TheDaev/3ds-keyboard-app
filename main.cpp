@@ -122,13 +122,13 @@ int main(int argc, char **argv)
 	
 	
 	consoleSelect(&down);
-	std::cout<<"	A	B	C	D	E	F	G	H	I	J	"<<std::endl
+	std::cout<<"\x1b[10;5H	A	B	C	D	E	F	G	H	I	J	"<<std::endl
 				
-			 <<"	K	L	M	N	O	P	Q	R	S	T	"<<std::endl
+			 <<"\x1b[15;5H	K	L	M	N	O	P	Q	R	S	T	"<<std::endl
 			 
-			 <<"			U	V	W	X	Y	Z 			"<<std::endl
+			 <<"\x1b[20;5H			U	V	W	X	Y	Z 			"<<std::endl
 			 
-			 <<"				   [space]                  "<<std::endl;
+			 <<"\x1b[25;5H				   [space]                  "<<std::endl;
 			 
 	
 	
@@ -153,19 +153,22 @@ int main(int argc, char **argv)
 		
 		
 		consoleSelect(&top);
-		std::cout<<"\x1b[1;1HCurrent letter: "<<ls.le<<std::endl;
-		std::cout<<"\x1b[2;1HString: "<<cs<<std::endl;
-		std::cout<<"\x1b[3;1HX: "<<x<<std::endl;
-		std::cout<<"\x1b[4;1HY: "<<y<<std::endl;
-		
+		std::cout<<"\x1b[1;1H"<<cs<<std::endl;
 		
 		if(kDown & KEY_SELECT)
 		{
 			cs += " ";
 		}
 		
+		if(kDown & KEY_R)
+		{
+			cs += "\n";
+		}
 		
-		
+		if(kDown & KEY_Y)
+		{
+			cs.pop_back();
+		}
 		
 		if (kDown & KEY_RIGHT)
 		{
